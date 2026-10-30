@@ -1,0 +1,279 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="product-detail-page">
+
+    <div class="product-detail-container">
+
+        <!-- BACK TO MARKETPLACE -->
+        <a href="/marketplace" class="back-marketplace">
+            <span>←</span>
+            Back to Marketplace
+        </a>
+
+        <!-- PRODUCT DETAIL CARD -->
+        <div class="product-detail-card">
+
+            <!-- ================= IMAGE ================= -->
+            <div class="product-detail-image-section">
+
+                <%
+                    let imageUrl = "";
+
+                    if (product.image) {
+                        const image = String(product.image);
+
+                        if (
+                            image.startsWith("http://") ||
+                            image.startsWith("https://")
+                        ) {
+                            // Cloudinary image
+                            imageUrl = image;
+                        } else {
+                            // Old local image
+                            imageUrl = "/uploads/" + image;
+                        }
+                    }
+                %>
+
+                <% if (imageUrl) { %>
+
+                    <img
+                        src="<%= imageUrl %>"
+                        alt="<%= product.productName %>"
+                        class="product-detail-image"
+                        loading="lazy"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                    >
+
+                    <!-- IMAGE ERROR FALLBACK -->
+                    <div
+                        class="product-detail-placeholder"
+                        style="display:none;"
+                    >
+                        <span>✦</span>
+                        <p>Image unavailable</p>
+                    </div>
+
+                <% } else { %>
+
+                    <!-- NO IMAGE -->
+                    <div class="product-detail-placeholder">
+                        <span>✦</span>
+                        <p>Handmade Craft</p>
+                    </div>
+
+                <% } %>
+
+                <!-- IMAGE LABEL -->
+                <div class="detail-image-label">
+                    ✦ Handmade Product
+                </div>
+
+            </div>
+
+
+            <!-- ================= INFORMATION ================= -->
+            <div class="product-detail-info">
+
+                <!-- CATEGORY -->
+                <span class="detail-category">
+                    <%= product.category %>
+                </span>
+
+                <!-- PRODUCT NAME -->
+                <h1>
+                    <%= product.productName %>
+                </h1>
+
+                <!-- SHORT INTRO -->
+                <p class="detail-intro">
+                    A unique handmade creation crafted by a local artisan.
+                </p>
+
+                <!-- PRICE -->
+                <div class="detail-price-section">
+
+                    <span class="detail-price-label">
+                        Price
+                    </span>
+
+                    <div class="detail-price">
+                        ₹<%= Number(product.price || 0).toLocaleString("en-IN") %>
+                    </div>
+
+                </div>
+
+
+                <!-- MATERIAL -->
+                <% if (product.material) { %>
+
+                    <div class="detail-info-row">
+
+                        <div class="detail-info-icon">
+                            ◈
+                        </div>
+
+                        <div>
+
+                            <span class="detail-label">
+                                Material
+                            </span>
+
+                            <span class="detail-value">
+                                <%= product.material %>
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+
+                <div class="detail-divider"></div>
+
+
+                <!-- DESCRIPTION -->
+                <% if (product.description) { %>
+
+                    <div class="detail-description">
+
+                        <h3>
+                            About this product
+                        </h3>
+
+                        <p>
+                            <%= product.description %>
+                        </p>
+
+                    </div>
+
+                <% } %>
+
+
+                <!-- TAGS -->
+                <% if (product.tags && product.tags.length > 0) { %>
+
+                    <div class="detail-tags">
+
+                        <h3>
+                            Product Tags
+                        </h3>
+
+                        <div class="tags-list">
+
+                            <% product.tags.forEach(tag => { %>
+
+                                <span class="detail-tag">
+                                    #<%= tag %>
+                                </span>
+
+                            <% }) %>
+
+                        </div>
+
+                    </div>
+
+                <% } %>
+
+
+                <!-- ACTIONS -->
+                <div class="detail-actions">
+
+                    <form
+                        action="/cart/add/<%= product._id %>"
+                        method="POST"
+                    >
+
+                        <button
+                            type="submit"
+                            class="add-cart-btn"
+                        >
+
+                            <span>🛒</span>
+
+                            Add to Cart
+
+                            <span class="cart-arrow">→</span>
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+
+                <!-- TRUST FEATURES -->
+                <div class="product-trust-grid">
+
+                    <div class="trust-item">
+
+                        <span>✦</span>
+
+                        <div>
+
+                            <strong>Handmade</strong>
+
+                            <small>
+                                Unique artisan craft
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span>🤝</span>
+
+                        <div>
+
+                            <strong>Support Local</strong>
+
+                            <small>
+                                Direct artisan support
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="trust-item">
+
+                        <span>✓</span>
+
+                        <div>
+
+                            <strong>CraftConnect</strong>
+
+                            <small>
+                                Trusted marketplace
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRUST NOTE -->
+                <div class="product-trust-note">
+
+                    <span>✦</span>
+
+                    <p>
+                        Supporting local artisans through CraftConnect.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

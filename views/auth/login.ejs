@@ -1,0 +1,142 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <!-- LOGIN SIDE -->
+        <div class="auth-form-side">
+
+            <div class="auth-brand-mobile">
+                <!-- CRAFT<span>CONNECT</span> -->
+            </div>
+
+            <div class="auth-header">
+
+                <span class="auth-eyebrow">
+                    CRAFTCONNECT
+                </span>
+
+                <h1>Login</h1>
+
+                <p>
+                    Welcome back. Continue your journey with CraftConnect.
+                </p>
+
+            </div>
+
+
+            <form action="/login" method="POST">
+
+                <!-- EMAIL -->
+                <div class="auth-form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="auth-input-wrapper">
+
+                        <span class="auth-input-icon">✉</span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="auth-form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="auth-input-wrapper">
+
+                        <span class="auth-input-icon">🔒</span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+                <button
+                    type="submit"
+                    class="auth-submit-btn"
+                >
+                    <span>Login</span>
+                    <span class="auth-arrow">→</span>
+                </button>
+
+            </form>
+
+
+            <div class="auth-footer">
+
+                Don't have an account?
+
+                <a href="/signup">
+                    Sign Up
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- WELCOME SIDE -->
+        <div class="auth-welcome-side">
+
+            <div class="welcome-content">
+
+                <div class="welcome-logo">
+                    ✦
+                </div>
+
+                <span class="welcome-small">
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    Craft.
+                    <br>
+                    Connect.
+                    <br>
+                    Create.
+                </h2>
+
+                <p>
+                    Discover unique handmade products
+                    and connect with talented local artisans.
+                </p>
+
+                <div class="welcome-line"></div>
+
+                <span class="welcome-tag">
+                    EMPOWERING ARTISANS THROUGH TECHNOLOGY
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
